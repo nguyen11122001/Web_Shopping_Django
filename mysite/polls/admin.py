@@ -1,12 +1,15 @@
 from django.contrib import admin
-from .models import Category, Cart,User,Product,Oder
+from .models import Category,Product
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    search_fields = ['id', 'name']
+    # raw_id_fields = ['user']
 
 
-admin.site.register(Cart)
 admin.site.register(Category)
-admin.site.register(Oder)
-admin.site.register(Product)
-admin.site.register(User)
+admin.site.register(Product,ProductAdmin)
+
 
 
 

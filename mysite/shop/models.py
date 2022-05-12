@@ -1,8 +1,6 @@
 from django.db import models
-from django.conf import settings
-# User = settings.AUTH_USER_MODEL
 
-
+# Create your models here.
 class Category(models.Model):
     name =models.CharField(max_length=30)
 
@@ -22,6 +20,3 @@ class Product(models.Model):
 #     size = models.CharField(max_length=10)
 #     quantity =models.IntegerField()
 #     cart =models.ForeignKey(Cart,on_delete=models.CASCADE)
-
-
-
