@@ -1,5 +1,3 @@
-
-from operator import mod
 from django.db import models
 
 class User(models.Model):
@@ -14,7 +12,6 @@ class Category(models.Model):
     name =models.CharField(max_length=30)
 
 class Product(models.Model):
-  
     url =models.CharField(max_length=200)
     name =models.CharField(max_length=50)
     discription =models.TextField(max_length=1000)
@@ -22,13 +19,15 @@ class Product(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     store = models.ForeignKey(User,on_delete=models.CASCADE)
     quantity =models.IntegerField()
+    size = models.CharField(max_length=100, null=True)
     
-
+ 
 class Cart(models.Model):
     user =models.ForeignKey(User,on_delete=models.CASCADE)
 
 class Oder(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    size = models.CharField(max_length=10)
     quantity =models.IntegerField()
     cart =models.ForeignKey(Cart,on_delete=models.CASCADE)
 
