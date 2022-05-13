@@ -7,7 +7,7 @@ class ProductAdmin(admin.ModelAdmin):
     # raw_id_fields = ['user']
 
 
-admin.site.register(Category)
+admin.site.register(Category,ProductAdmin)
 admin.site.register(Product,ProductAdmin)
 
 
