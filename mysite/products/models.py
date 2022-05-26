@@ -10,14 +10,22 @@ class Category(models.Model):
         return self.name
 
 class Product(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    description = models.TextField(null=True, blank=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    
+    img = models.ImageField(null=True, default="avatar.svg")
+    name =models.CharField(max_length=50)
+    description = models.TextField(null=True, blank=True,max_length=1000)
+    
+    price =models.FloatField()
+    quantity =models.IntegerField(null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    avatar = models.ImageField(null=True, default="avatar.svg")
+    discount =models.IntegerField(null=True, default=0)
+    size = models.CharField(max_length=100, null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    price =models.FloatField()
-    discount =models.IntegerField(null=True, default=0)
+    
+    
 
     class Meta:
         ordering = ['-updated', '-created']
