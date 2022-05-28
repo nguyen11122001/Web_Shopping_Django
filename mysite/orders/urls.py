@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
 
-    path('oder/', views.createProduct, name="oder"),
+    path('order/<str:pk>/', views.order, name="order"),
+    path('cart/<str:pk>/', views.listOrders, name="cart"),
 
 ]

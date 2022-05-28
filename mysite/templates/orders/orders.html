@@ -1,0 +1,11 @@
+<!-- {% load static %} -->
+
+
+<ul>
+    {% for order in orders %}
+        
+        <li>{{order.product.name}} + {{order.quantity}}</li>
+        
+    {% endfor %}
+    
+</ul>

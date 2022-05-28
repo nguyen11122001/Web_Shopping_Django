@@ -1,11 +1,11 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
-from .models import Oder
+from .models import Order
 
 
 
         
-class OderForm(ModelForm):
+class OrderForm(ModelForm):
     class Meta:
-        model = Oder
+        model = Order
         fields =["size", "quantity"]

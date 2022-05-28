@@ -1,40 +1,44 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
 from products.models import Product
+from accounts.models import User
+from .forms import OrderForm
 
-from .forms import OderForm
-
-from .models import Cart, Oder
+from .models import Cart, Order
 
 # Create your views here.
 
 
-def addProductToCart(request,pk):
-    user = request.user
+def order(request,pk):
+    # user = request.user
+    user = User.objects.get(id=3)
     product = Product.objects.get(id=pk)
-    cart = get_object_or_404(Cart, User=user)
-    # cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    # updated = models.DateTimeField(auto_now=True)
-    # created = models.DateTimeField(auto_now_add=True)
-    # size = models.CharField(max_length=10)
-    # quantity =models.IntegerField()
-
+    cart = user.cart_set.first()
+    print(cart)
+    if cart != None :
+        cart = cart
+    else:
+        Cart.objects.create(user=user)
+    form = OrderForm(request.POST, request.FILES)
     if request.method == 'POST':
-        form = OderForm(request.POST, request.FILES)
-        Oder.objects.create(
+        
+        Order.objects.create(
             cart=cart,
             product=product,
             size=request.POST.get('size'),
             quantity=request.POST.get('quantity'),
         )
         
-        return redirect('home-Oder')
+        return redirect('cart')
     
+    context = {'form': form, 'product': product}
+    return render(request, 'orders/order-form.html', context)
     
-    return render(request, 'products/product-form.html')
 
-def listOders(request):
-    user = request.user
-    cart = get_object_or_404(Cart, User=user)
-    oders = Oder.objects.filter(cart=cart)
-    return render(request, 'oders/oders.html', {'oders': oders})
+def listOrders(request,pk):
+    # user = request.user
+    user = User.objects.get(id=pk)
+    cart = user.cart_set.first()
+    
+    orders = cart.order_set.all()
+    return render(request, 'orders/orders.html', {'orders': orders})
