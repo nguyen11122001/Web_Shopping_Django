@@ -37,7 +37,7 @@ class Product(models.Model):
 class Image(models.Model):
     description = models.TextField(null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    img = models.ImageField(null=True, default="product.svg")
+    img = models.ImageField(null=True, default="product.svg",upload_to='product')
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -46,3 +46,4 @@ class Image(models.Model):
 
     def __str__(self):
         return self.name
+    

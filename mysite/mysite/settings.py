@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "products.apps.ProductsConfig",
-    "oders.apps.OdersConfig",
+    "orders.apps.OrdersConfig",
     "accounts.apps.AccountsConfig",
     "search.apps.SearchConfig",
     

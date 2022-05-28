@@ -114,9 +114,8 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 									<div class="productinfo text-center">
-										<img src=" {%static ''|add:pro.img.url %}" />
-										<!-- <img src="{% static '/images/product/'|add:pro.img %}"  alt="" /> -->
-										<!-- <h2>{{pro.img.url}}</h2> -->
+										<!-- <img src=" {%static ''|add:pro.img.url %}" /> -->
+										<img src="{{pro.img.url}}" />
 										<h2>{{pro.price|floatformat:3}} đ</h2>
 										<p style ="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{pro.name}}</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

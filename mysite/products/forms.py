@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from .models import Product
+from .models import Product, Image
 
 
 class ProductForm(ModelForm):
@@ -8,3 +8,10 @@ class ProductForm(ModelForm):
         model = Product
         fields = '__all__'
         exclude = ['discount', 'updated', 'created']
+        
+class ImageForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = '__all__'
+        exclude = ['product', 'updated', 'created']
+        
