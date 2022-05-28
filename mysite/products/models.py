@@ -13,7 +13,7 @@ class Product(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     
-    img = models.ImageField(null=True, default="avatar.svg")
+    img = models.ImageField(null=True,upload_to='product')
     name =models.CharField(max_length=50)
     description = models.TextField(null=True, blank=True,max_length=1000)
     
