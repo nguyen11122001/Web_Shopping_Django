@@ -5,7 +5,11 @@ from products.models import Product
 # Create your models here.
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
     
 
 class Order(models.Model):
