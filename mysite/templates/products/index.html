@@ -80,7 +80,7 @@
 
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h4 class="panel-title"><a href="#">{{cago.name}}</a></h4>
+								<h4 class="panel-title"><a href="/products/category/{{cago.id}}">{{cago.name}}</a></h4>
 							</div>
 						</div>
 
@@ -118,13 +118,13 @@
 										<img src="{{pro.img.url}}" />
 										<h2>{{pro.price|floatformat:3}} đ</h2>
 										<p style ="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{pro.name}}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="/orders/order/{{pro.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>{{pro.price|floatformat:3}} đ</h2>
 											<p style ="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{pro.name}}</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="/orders/order/{{pro.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
 							</div>

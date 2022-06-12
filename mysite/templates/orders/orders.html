@@ -1,11 +1,76 @@
+{% extends "products/base.html" %}
 <!-- {% load static %} -->
 
-
+{% comment %} 
 <ul>
-    {% for order in orders %}
-        
-        <li>{{order.product.name}} + {{order.quantity}}</li>
-        
-    {% endfor %}
     
-</ul>
+    
+</ul> {% endcomment %}
+
+
+
+{% load static %}
+
+{% block title %}Cart | E-Shopper{% endblock %}
+{% block content %}
+
+
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Home</a></li>
+				  <li class="active">Shopping Cart</li>
+				</ol>
+			</div>
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Item</td>
+							<td class="description"></td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for order in orders %}
+        
+        
+
+						<tr>
+							<td class="cart_product">
+								<a href=""><img width="50" height="50"src={{order.product.img.url}} alt=""></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="">{{order.product.name}}</a></h4>
+							</td>
+							<td class="cart_price">
+								<p>{{order.product.price}}</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<input class="cart_quantity_input" type="text" name="quantity" value={{order.quantity}} autocomplete="off" size="2">
+								</div>
+							</td>
+							<td class="cart_total">
+                                
+								<p class="cart_total_price"> {{order.total}} </p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+					    {% endfor %}
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+	
+
+{% endblock %}

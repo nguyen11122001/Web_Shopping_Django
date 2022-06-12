@@ -1,5 +1,4 @@
 
-from unicodedata import category
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
@@ -20,8 +19,12 @@ def createProduct(request):
     context = {'form': form, 'categorys': categorys}
     return render(request, 'products/product-form.html', context)
 
-def list(request):
-    products = Product.objects.all()
+def list(request, category_id=None):
+    if (category_id == None):
+        products = Product.objects.all()
+    else:
+        products = Product.objects.filter( category_id =category_id)
+
     category = Category.objects.all()
     context = {'product': products, 'category': category}
     return render(request, 'products/index.html', context)

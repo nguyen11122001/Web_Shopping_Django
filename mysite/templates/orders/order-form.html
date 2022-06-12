@@ -2,7 +2,10 @@
 <div>
     <form method="POST" action="" enctype="multipart/form-data">
          {%csrf_token%}
-         {{form.as_p}}
+         {% comment %} {{form.as_p}} {% endcomment %}
+         <input type="text" name="size" placeholder="Size">
+         <input type="text" name="quantity" placeholder="Quantity">
+
         <input type="submit"value="submit">
     </form>
 </div>
