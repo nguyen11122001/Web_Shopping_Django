@@ -89,3 +89,20 @@ def listImage(request, pk):
     context = {'product': product, 'images': images,'count':count}
     return render(request, 'products/images.html', context)
 
+def Product(request, pk):
+    product = Product.objects.get(id=pk)
+    form = ProductForm(instance=product)
+    # if request.method == 'POST' :
+    #     print(1)
+    #     form = ProductForm(request.POST, request.FILES,instance=product)
+    #     if form.is_valid():
+    #         print(1)
+            
+    #         form.save()
+    #     # product = form.save(commit=False)
+    #         return redirect('home-product')
+    
+    categorys = Category.objects.all()
+    context = {'form': form, 'categorys': categorys}
+    return render(request, 'products/product-form.html', context)
+
