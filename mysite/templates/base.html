@@ -12,6 +12,8 @@
     <link href="{% static 'css/animate.css' %}" rel="stylesheet">
 	<link href="{% static 'css/main.css' %}" rel="stylesheet">
 	<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -47,19 +49,27 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{% static 'polls/images/home/logo.png' %}" alt="" /></a>
+							<a href="/products"><img src="{% static '/images/home/logo.png' %}" alt="" /></a>
 						</div>
 					
 					</div>
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
+								
 								<!-- <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li> -->
 								<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
-								<li><a href="../orders/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								
 								{%if user.username %}
-								<li> {{user.username}}</li>
+									{%if user.is_staff %}
+									
+									<li> <a href=""><i class="fa fa-user"></i>{{user.username}}</a></li>
+									<li> <a href="/logout"><i class="fa fa-lock"></i> Logout</a></li>
+									{%else%}
+									<li><a href="/orders/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+									<li> <a href=""><i class="fa fa-user"></i>{{user.username}}</a></li>
+									<li> <a href="/logout"><i class="fa fa-lock"></i> Logout</a></li>
+									{%endif%}
 
 								{%else%}
 								<li><a href="../"><i class="fa fa-lock"></i> Login</a></li>
@@ -86,9 +96,6 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="/products" class="active">Home</a></li>
-					
-							
-								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
 					</div>

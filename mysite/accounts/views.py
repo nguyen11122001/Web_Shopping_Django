@@ -1,3 +1,4 @@
+import email
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -32,22 +33,16 @@ from carts.models import Cart, Order
 
 
 def registerPage(request):
+    
     form = MyUserCreationForm()
-
     if request.method == 'POST': 
-        
         form = MyUserCreationForm(request.POST)
-        
-        
         if form.is_valid():
-
             user = form.save(commit=False)
-            
-
             user.username = user.username.lower()
             user.save()
             login(request, user)
-            return redirect('home')
+            return redirect('home-product')
         else:
             messages.error(request, 'An error occurred during registration')
 
@@ -64,7 +59,7 @@ def home(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('home')
+    return redirect('home-product')
 
 def loginUser(request):
     page = "Login"

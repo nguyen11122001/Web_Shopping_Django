@@ -1,7 +1,32 @@
-<div>
-    <form method="POST" action="" enctype="multipart/form-data">
-         {%csrf_token%}
-         {{form.as_p}}
-        <input type="submit"value="submit">
-    </form>
-</div>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Product Details | E-Shopper{% endblock %}
+{% block content %}
+{% comment %} <section id="form"><!--form--> {% endcomment %}
+    <div class="container">
+        <div class="row" style="margin-bottom: 50px">
+            <div class="col-sm-4" >
+                <img src="{{product.img.url}}" />
+            </div>
+            <div class="col-sm-4"  style="margin-left: 100px  ;  width:600px; "  > 
+                <div style="padding:20px; background:#FE980F">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    {% for field in form %}
+                        <div class="form__group form__group" style="margin-bottom: 20px">
+                            <label style="with: 600px" for="room_name">{{field.label}}</label>
+                            {{field}}
+                        </div>
+                    {% endfor %}
+                    <input style="margin-left:230px" type="submit"value="submit">
+                </form>  
+                </div>       
+                
+            </div>
+        </div>
+    </div>
+
+{% comment %} </section><!--/form--> {% endcomment %}
+
+{% endblock %}

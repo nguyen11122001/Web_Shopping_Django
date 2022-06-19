@@ -7,7 +7,7 @@ class ProductForm(ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
-        exclude = ['discount', 'updated', 'created']
+        exclude = ['discount', 'updated', 'created', 'size']
         
 class ImageForm(ModelForm):
     class Meta:

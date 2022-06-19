@@ -1,8 +1,12 @@
-{% extends "products/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Home | E-Shopper{% endblock %}
 {% block content %}
+
+{%if user.is_staff %}
+
+{%else%}
 <section id="slider"><!--slider-->
 	<div class="container">
 		<div class="row">
@@ -66,8 +70,8 @@
 			</div>
 		</div>
 	</div>
-</section><!--/slider-->
-
+</section><!--/slider-->	
+{%endif%}
 <section>
 	<div class="container">
 		<div class="row">
@@ -90,14 +94,7 @@
 					</div><!--/category-products-->
 				
 				
-					
-					<div class="price-range"><!--price-range-->
-						<h2>Price Range</h2>
-						<div class="well text-center">
-							 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-							 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-						</div>
-					</div><!--/price-range-->
+				
 					
 					<div class="shipping text-center"><!--shipping-->
 						<img src="{% static '/images/home/shipping.jpg' %}" alt="" />
@@ -108,46 +105,52 @@
 			
 			<div class="col-sm-9 padding-right">
 				<div class="features_items"><!--features_items-->
-					<h2 class="title text-center">Features Items</h2>
+					{%if user.is_staff %}
+					<div class="title text-center  ">
+						<a class="btn btn-default add-to-cart" href="/products/create-product/"  >ADD PRODUCT</a>
+					</div>
+					{%else%}
+						<h2 class="title text-center">Features Items</h2>
+					{%endif%}
 					{% for pro in product %}
 					<div class="col-sm-4">
 						<div class="product-image-wrapper">
 							<div class="single-products">
 									<div class="productinfo text-center" >
 										<!-- <img src=" {%static ''|add:pro.img.url %}" /> -->
-										<img src="{{pro.img.url}}" />
+										<img style=" height: 300px" src="{{pro.img.url}}" />
 										<h2>{{pro.price|floatformat:3}} đ</h2>
 										<p style ="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{pro.name}}</p>
-										<a href="/orders/order/{{pro.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									
+
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>{{pro.price|floatformat:3}} đ</h2>
 											<p style ="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{pro.name}}</p>
-											<a href="/orders/order/{{pro.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="/products/product-details/{{pro.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+										
+
 										</div>
-									</div>
+									</div> 
+
+									
 							</div>
-							<div class="choose">
-								<ul class="nav nav-pills nav-justified">
-									<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-								</ul>
-							</div>
+						
 						</div>
 					</div>
 				
 					{% endfor %}
 				</div><!--features_items-->
-				
-		
-				
-			
-				
+
 			</div>
 		</div>
 	</div>
 </section>
+
 {% endblock %}
+
+
 
 
 

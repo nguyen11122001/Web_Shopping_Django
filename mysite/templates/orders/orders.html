@@ -1,4 +1,4 @@
-{% extends "products/base.html" %}
+{% extends "base.html" %}
 <!-- {% load static %} -->
 
 {% comment %} 
@@ -42,10 +42,10 @@
 
 						<tr>
 							<td class="cart_product">
-								<a href=""><img width="50" height="50"src={{order.product.img.url}} alt=""></a>
+								<a href="/products/product-details/{{order.product.id}}"><img width="50" height="50"src={{order.product.img.url}} alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{order.product.name}}</a></h4>
+								<h4><a href="/products/product-details/{{order.product.id}}">{{order.product.name}}</a></h4>
 							</td>
 							<td class="cart_price">
 								<p>{{order.product.price}}</p>
