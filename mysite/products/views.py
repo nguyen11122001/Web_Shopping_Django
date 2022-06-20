@@ -60,7 +60,7 @@ def deleteProduct(request, pk):
     return redirect("product-details",pk=pk)    
    
 
-
+@login_required(login_url='login')
 def addImage(request, pk):
     if request.user.is_staff != 1:
         return redirect('home-product')
@@ -77,7 +77,10 @@ def addImage(request, pk):
             return redirect('product-images', pk=pk)
     return render(request, 'products/image-form.html', {'form': form})
 
+@login_required(login_url='login')
 def listImage(request, pk):
+    if request.user.is_staff != 1:
+        return redirect('home-product')
     product = Product.objects.get(id=pk)
     images = product.image_set.all()
     
@@ -91,6 +94,20 @@ def listImage(request, pk):
     # images = Image.objects.get(product=product)
     context = {'product': product, 'images': images,'count':count}
     return render(request, 'products/images.html', context)
+
+@login_required(login_url='login')
+def delImage(request, pk):
+    if request.user.is_staff != 1:
+        return redirect('home-product')
+    
+    img = Image.objects.get(id=pk)
+    pro_id = img.product.id
+    img.delete()       
+    return redirect('product-images', pk=pro_id)
+
+
+
+
 
 def detailsProduct(request, pk):
     product = Product.objects.get(id=pk)

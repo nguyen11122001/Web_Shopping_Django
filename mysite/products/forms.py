@@ -13,5 +13,5 @@ class ImageForm(ModelForm):
     class Meta:
         model = Image
         fields = '__all__'
-        exclude = ['product', 'updated', 'created']
+        exclude = ['product', 'updated', 'created','description']
         
