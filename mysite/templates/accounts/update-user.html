@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Product Details | E-Shopper{% endblock %}
+{% block title %}Profile | E-Shopper{% endblock %}
 {% block content %}
 {% comment %} <section id="form"><!--form--> {% endcomment %}
     <div class="container">
         <div class="row" style="margin-bottom: 50px">
             <div class="col-sm-4" >
-                <img src="{{product.img.url}}" />
+                <img style="width: 450px;" src="{{user.avatar.url}}" />
             </div>
             <div class="col-sm-4"  style="margin-left: 100px  ;  width:600px; "  > 
                 <div style="padding:20px; background:#FE980F">

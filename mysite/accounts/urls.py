@@ -9,5 +9,5 @@ urlpatterns = [
     path('home/', views.home, name="home"),
     path('', views.loginUser, name="login"),
     path('edit/', views.updateUser, name="edit-profile"),
-    path('profile/<str:pk>/', views.userProfile, name="user-profile"),
+    path('profile/', views.userProfile, name="user-profile"),
 ]

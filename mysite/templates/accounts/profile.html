@@ -1,2 +1,42 @@
-{{user}}
-{{cart}}
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile | E-Shopper{% endblock %}
+{% block content %}
+{% comment %} <section id="form"><!--form--> {% endcomment %}
+    <div class="container">
+        <div class="row" style="margin-bottom: 50px">
+            
+            <div class="col-sm-4"  style="margin-left: 100px  ;  width:600px; "  > 
+                <div style="padding:20px; background:#84dde4">
+                    <a href="/edit">Edit profile</a>
+                <form method="" action="" enctype="multipart/form-data">
+                    <div class="" style="margin-bottom: 20px">
+                        <label style="width: 600px" >Avatar</label>
+                        <img src="{{user.avatar.url}}" style="height: 250px;" />
+                        <label style="width: 600px" >Name</label>
+                        {{user.name}}
+                        <label style="width: 600px" >Mail</label>
+                        {{user.mail}}
+                        <label style="width: 600px" >Bio</label>
+                        {{user.bio}}
+                        
+                    </div>
+                    <!-- {%csrf_token%}
+                    {% for field in form %}
+                        <div class="form__group form__group" style="margin-bottom: 20px">
+                            <label style="width: 600px" for="room_name">{{field.label}}</label>
+                            {{field}}
+                        </div>
+                    {% endfor %} -->
+                    
+                </form>  
+                </div>       
+                
+            </div>
+        </div>
+    </div>
+
+{% comment %} </section><!--/form--> {% endcomment %}
+
+{% endblock %}

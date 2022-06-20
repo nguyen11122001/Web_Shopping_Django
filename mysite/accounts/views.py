@@ -86,15 +86,14 @@ def updateUser(request):
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('user-profile', pk=user.id)
+            return redirect('user-profile')
 
     return render(request, 'accounts/update-user.html', {'form': form})
 
 @login_required(login_url='login')
-def userProfile(request, pk):
-    user = User.objects.get(id=pk)
+def userProfile(request):
+    user = request.user
     cart = Cart.objects.filter(user=user)
-    
-
-    context = {'user': user, 'cart': cart}
+    form =UserForm(instance=user)
+    context = {'user': user, 'cart': cart,'form':form}
     return render(request, 'accounts/profile.html', context)
