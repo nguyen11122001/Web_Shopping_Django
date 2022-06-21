@@ -1,4 +1,5 @@
 import email
+from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -63,6 +64,8 @@ def logoutUser(request):
 
 def loginUser(request):
     page = "Login"
+    # if request.user != AnonymousUser:
+    #     return redirect("home-product")
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')

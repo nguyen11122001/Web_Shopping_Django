@@ -11,3 +11,6 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True, default="avatar.svg",upload_to='user')
     REQUIRED_FIELDS = []
     
+    def __str__(self):
+        return self.name
+    

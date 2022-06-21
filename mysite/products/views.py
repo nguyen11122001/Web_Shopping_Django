@@ -41,9 +41,9 @@ def updateProduct(request, pk):
             form.save()
         # product = form.save(commit=False)
             return redirect('product-details',pk=pk)
-    
+    images = product.image_set.all()
     categorys = Category.objects.all()
-    context = {'form': form, 'categorys': categorys,'product':product}
+    context = {'form': form, 'categorys': categorys,'product':product,'images': images}
     return render(request, 'products/product-form.html', context)
 
 
@@ -126,9 +126,7 @@ def detailsProduct(request, pk):
             # form = OrderForm(request.POST, request.FILES)
            
             order = Order.objects.filter(product=product, cart=cart).first()
-            print('order')
-            print(cart.id)
-            print('order')
+       
             if order != None:
                 order.quantity = order.quantity + int(request.POST.get('quantity'))
                 order.save()

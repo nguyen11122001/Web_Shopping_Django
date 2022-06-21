@@ -63,3 +63,23 @@ def listOrders(request):
         return render(request, 'orders/orders.html', {'orders': orders})
     else:
         return redirect('home-product')
+    
+    
+@login_required(login_url='login')
+def deleteOrder(request,pk):
+    
+    user = request.user
+    product = Product.objects.get(id=pk)
+    cart = user.cart_set.first()
+    print(cart)
+    if cart != None :
+        cart = cart
+    else: 
+        Cart.objects.create(user=user)
+    
+    order = Order.objects.filter(product=product, cart=cart).first()
+
+    if order != None:
+        order.delete() 
+    
+    return redirect('cart')

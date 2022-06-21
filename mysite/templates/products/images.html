@@ -1,11 +1,57 @@
+{% extends "base.html" %}
 {% load static %}
-<h1>{{product.name}}</h1>
-<a href="/products/add-product-images/{{product.id}}">Add Image</a>
-<ul>{%if count%}
-    
-    {% for image in images %}
-        <li><img src="{{image.img.url}}"  /></li>        
-        <a href="/products/delete-image/{{image.id}}">Delete</a>
-    {% endfor %}
-    {%endif%}
-</ul>
+
+{% block title %}Home | E-Shopper{% endblock %}
+{% block content %}
+
+
+
+<section>
+	<div class="container">
+		<div class="row">
+		
+			
+			<div class="col-sm-9 padding-right">
+				<h2 >
+				<a style="color:'#FE980F' ; font-family: 'Roboto', sans-serif;
+				font-size: 18px;
+				font-weight: 700;
+				margin: 0 auto 30px;
+				text-align: center;
+				text-transform: uppercase;" href="/products/product-details/{{product.id}}">{{product.name}}</a>
+				</h2>
+				<a href="/products/add-product-images/{{product.id}}">Add Image</a>
+				<div class="features_items"><!--features_items-->
+				
+
+					{%if count%}
+					{% for image in images %}
+					<div class="col-sm-4">
+						<div class="product-image-wrapper">
+							<div class="single-products">
+									<div class="productinfo text-center" >
+										
+										<img style=" height: 300px; margin-bottom:10px;" src="{{image.img.url}}" />
+										<a class="btn btn-default add-to-cart" href="/products/delete-image/{{image.id}}">Delete</a>
+										
+									
+
+									</div>
+							
+
+									
+							</div>
+						
+						</div>
+					</div>
+				
+					{% endfor %}
+					{% endif %}
+				</div><!--features_items-->
+
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

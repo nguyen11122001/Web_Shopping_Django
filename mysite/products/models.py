@@ -45,5 +45,5 @@ class Image(models.Model):
         ordering = ['-updated', '-created']
 
     def __str__(self):
-        return self.description
+        return self.product.name
     

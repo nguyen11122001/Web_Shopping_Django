@@ -40,18 +40,12 @@
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
-							{% comment %} <div class="view-product">
-
-								<img src={{product.img.url}} alt="" />
-								<h3>ZOOM</h3>
-							</div> {% endcomment %}
+					
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner" >
 										
-										{% comment %} <div class="item active">	{% for image1 in images %}							
-										  <a href=""><img src={{image1.img.url}} alt=""></a>{%endfor%}
-										</div> {% endcomment %}
+										
 										<div class="item active carousel-item" >
 											<img class="d-block w-100" style=" height: 300px" src={{product.img.url}} alt="">
 										</div>
@@ -62,11 +56,7 @@
 										  	 
 										</div>
 										{%endfor%}
-										{% comment %} <div class="item">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div> {% endcomment %}
+								
 										
 									</div>
 

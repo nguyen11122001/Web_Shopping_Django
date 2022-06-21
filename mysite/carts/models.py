@@ -11,6 +11,8 @@ class Cart(models.Model):
     #     primary_key=True,
     # )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.user.name
     
 
 class Order(models.Model):
@@ -29,5 +31,7 @@ class Order(models.Model):
     @property
     def total(self):
         return self.quantity * self.product.price
+    def __str__(self):
+        return (self.cart.user.name + " => " +self.product.name)
     
     

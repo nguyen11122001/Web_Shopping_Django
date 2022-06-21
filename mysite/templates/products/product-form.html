@@ -3,24 +3,51 @@
 
 {% block title %}Product Details | E-Shopper{% endblock %}
 {% block content %}
-{% comment %} <section id="form"><!--form--> {% endcomment %}
     <div class="container">
         <div class="row" style="margin-bottom: 50px">
             <div class="col-sm-4" >
-                <img src="{{product.img.url}}" />
                 <a href="/products/product-images/{{product.id}}">Edit Image</a>
+					
+                    <div id="similar-product" class="carousel slide" data-ride="carousel">
+                          <!-- Wrapper for slides -->
+                            <div class="carousel-inner" >
+                                
+                                
+                                <div class="item active carousel-item" >
+                                    <img class="d-block w-100" style=" height: 300px" src={{product.img.url}} alt="">
+                                </div>
+                                {% for image1 in images %}
+                                <div  class="item carousel-item" >
+                                     
+                                    <img class="d-block w-100" style=" height: 300px"  src={{image1.img.url}} alt="">
+                                       
+                                </div>
+                                {%endfor%}
+                        
+                                
+                            </div>
+
+                          <!-- Controls -->
+                          <a class="left item-control" href="#similar-product" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                          </a>
+                          <a class="right item-control" href="#similar-product" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                    </div>
+
             </div>
-            <div class="col-sm-4"  style="margin-left: 100px  ;  width:600px; "  > 
-                <div style="padding:20px; background:#FE980F">
+            <div class="col-sm-4"  style="margin-left: 50px  ;  width:700px; "  > 
+                <div >
                 <form method="POST" action="" enctype="multipart/form-data">
                     {%csrf_token%}
                     {% for field in form %}
-                        <div class="form__group form__group" style="margin-bottom: 20px">
+                        <div class="form__group form__group" style="margin-bottom: 20px; padding:20px; background:#ffebcc">
                             <label style="width: 600px" for="room_name">{{field.label}}</label>
                             {{field}}
                         </div>
                     {% endfor %}
-                    <input style="margin-left:230px" type="submit"value="submit">
+                    <input style="margin-left:250px" type="submit"value="submit">
                 </form>  
                 </div>       
                 
@@ -28,6 +55,5 @@
         </div>
     </div>
 
-{% comment %} </section><!--/form--> {% endcomment %}
 
 {% endblock %}
